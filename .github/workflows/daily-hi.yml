@@ -1,0 +1,13 @@
+name: Daily Echo hi F
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at 6 PM CST (00:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  say-hi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo hi F
+        run: echo "hi F"
