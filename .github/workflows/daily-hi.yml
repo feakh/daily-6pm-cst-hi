@@ -5,11 +5,12 @@ on:
     - cron: '0 0 * * *'  # Runs daily at 6 PM CST
   workflow_dispatch:
 
+env:  # ✅ Global GitHub environment variable
+  USER_NAME: F
+
 jobs:
-  interact:  # ✅ renamed job from 'say-hi' to 'interact'
+  interact:
     runs-on: ubuntu-latest
-    env:
-      USER_NAME: F  # ✅ declared once here
 
     steps:
       - name: Say hi
