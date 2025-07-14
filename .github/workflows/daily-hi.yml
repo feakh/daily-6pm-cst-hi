@@ -2,22 +2,21 @@ name: Daily Greeting
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at 6 PM CST
+    - cron: '0 0 * * *'  # 6 PM CST
   workflow_dispatch:
-
-env:  # ✅ Global GitHub environment variable
-  USER_NAME: F
 
 jobs:
   interact:
     runs-on: ubuntu-latest
+    environment: prod   # ✅ must match Terraform's environment name
 
     steps:
       - name: Say hi
-        run: echo "hi $USER_NAME"
+        run: echo "hi ${{ vars.USER_NAME }}"
 
       - name: Ask how are you
-        run: echo "how are you $USER_NAME?"
+        run: echo "how are you ${{ vars.USER_NAME }}?"
 
       - name: Say bye
-        run: echo "bye $USER_NAME"
+        run: echo "bye ${{ vars.USER_NAME }}"
+
