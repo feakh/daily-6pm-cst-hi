@@ -1,13 +1,22 @@
-name: Daily Echo hi F
+name: Daily Greeting
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs daily at 6 PM CST (00:00 UTC)
+    - cron: '0 0 * * *'  # Runs daily at 6 PM CST
   workflow_dispatch:
 
 jobs:
-  say-hi:
+  interact:  # ✅ renamed job from 'say-hi' to 'interact'
     runs-on: ubuntu-latest
+    env:
+      USER_NAME: F  # ✅ declared once here
+
     steps:
-      - name: Echo hi F
-        run: echo "hi F"
+      - name: Say hi
+        run: echo "hi $USER_NAME"
+
+      - name: Ask how are you
+        run: echo "how are you $USER_NAME?"
+
+      - name: Say bye
+        run: echo "bye $USER_NAME"
